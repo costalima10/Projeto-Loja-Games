@@ -36,7 +36,7 @@ public class CategoriaController {
 		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
 	
-	//metodo de busca por ID
+	//metodo de busca por ID 
 	@GetMapping("/{id}")
 	public ResponseEntity<Categoria> getById(@PathVariable Long id){
 		return categoriaRepository.findById(id)
@@ -48,14 +48,14 @@ public class CategoriaController {
 	public ResponseEntity<List<Categoria>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(categoriaRepository.findAllByNomeContainingIgnoreCase(nome)); 
 	}
-	// metodo de criaçao 
+	//metodo de criaçao 
 	@PostMapping
 	public ResponseEntity<Categoria> post(@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(categoriaRepository.save(categoria));
 	}
 	//metodo de atualização
-	 @PutMapping
+	 @PutMapping 
 	 public ResponseEntity<Categoria> put(@Valid @RequestBody Categoria categoria){
 		return categoriaRepository.findById(categoria.getId())
 				.map(resp -> ResponseEntity.status(HttpStatus.OK)
